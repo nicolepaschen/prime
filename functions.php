@@ -6,4 +6,4 @@
  */
 
 locate_template( '/inc/boldgrid-theme-framework-config/config.php', true, true );
-require_once get_template_directory() . '/inc/boldgrid-theme-framework/boldgrid-theme-framework.php';
+require_once ABSPATH . '/wp-content/themes/boldgrid-theme-framework/boldgrid-theme-framework/boldgrid-theme-framework.php';

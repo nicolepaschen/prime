@@ -6,12 +6,19 @@
  *
  * @package Prime
  */
+
+// @todo TMP CODE.
+if( ! class_exists( 'BoldGrid_Framework_Featured_Image' ) ) {
+	include_once( ABSPATH . BGTFW_PATH . '/includes/class-boldgrid-framework-featured-image.php' );
+}
+
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
+	<?php BoldGrid_Framework_Featured_Image::above_content( 'post' ); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php do_action( 'before_entry_title' ); ?>
-		<header class="entry-header">
+		<header class="entry-header" style="<?php BoldGrid_Framework_Featured_Image::header_style( 'post' ); ?>">
 			<?php get_template_part( 'templates/entry-header' ); ?>
 			<div class="entry-meta">
 				<?php boldgrid_posted_on(); ?>
@@ -19,9 +26,7 @@
 		</header><!-- .entry-header -->
 		<?php do_action( 'after_entry_title' ); ?>
 		<div class="entry-content">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<?php the_post_thumbnail(); ?>
-			<?php endif; ?>
+			<?php BoldGrid_Framework_Featured_Image::in_content( 'post' ); ?>
 			<?php the_content(); ?>
 			<?php wp_link_pages( array( 'before' => '<nav class="page-nav"><p>' . __( 'Pages:', 'bgtfw' ), 'after' => '</p></nav>' ) ); ?>
 		</div><!-- .entry-content -->
